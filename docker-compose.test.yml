@@ -1,3 +1,21 @@
-sut:
-  build: .
-  command: tests.sh
+version: '3.3'
+
+services:
+
+  sut:
+    build:
+      context: .
+      dockerfile: Dockerfile-7.1
+    command: bash tests.sh
+
+  php70:
+    build:
+      context: .
+      dockerfile: Dockerfile-7.0
+    command: bash tests.sh
+
+  php72:
+    build:
+      context: .
+      dockerfile: Dockerfile-7.2
+    command: bash tests.sh
