@@ -1,6 +1,16 @@
 FROM php:7.1-cli
 
-LABEL maintainer="wade@iwader.co.uk"
+ARG BUILD_DATE
+ARG VCS_REF
+
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.vcs-url="https://github.com/iWader/laravel-ci.git" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.schema-version="1.0" \
+      org.label-schema.vendor="iwader.co.uk" \
+      org.label-schema.name="laravel-ci" \
+      org.label-schema.description="Docker for Laravel in a CI environment" \
+      org.label-schema.url="https://github.com/iwader/laravel-ci"
 
 ENV NVM_VERSION v0.33.2
 ENV NVM_DIR /home/circleci/.nvm
