@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo "Build hook running"
-echo "Cache Tag: ${CACHE_TAG}"
 
 if [ "$SOURCE_BRANCH" == "master" ]; then
 
@@ -17,6 +16,8 @@ else
 
     # Test build
 
-    docker build -t $IMAGE_NAME .
+    docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+                 --build-arg VCS_REF=`git rev-parse --short HEAD` \
+                 -t $IMAGE_NAME -f Dockerfile-$CACHE_TAG .
 
 fi
