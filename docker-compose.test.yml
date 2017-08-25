@@ -7,15 +7,3 @@ services:
       context: .
       dockerfile: Dockerfile-7.1
     command: ./scripts/tests.sh
-
-  php70:
-    build:
-      context: .
-      dockerfile: Dockerfile-7.0
-    command: ./scripts/tests.sh
-
-  php72:
-    build:
-      context: .
-      dockerfile: Dockerfile-7.2
-    command: ./scripts/tests.sh
