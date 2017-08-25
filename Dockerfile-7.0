@@ -42,5 +42,3 @@ RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/${NVM_VERSION}/ins
 COPY ./scripts ./scripts
 
 RUN ./scripts/composer.sh
-
-COPY ./tests.sh ./tests.sh
