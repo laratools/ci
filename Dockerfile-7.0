@@ -13,7 +13,6 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.url="https://github.com/iwader/laravel-ci"
 
 ENV NVM_VERSION v0.33.2
-ENV NVM_DIR /home/circleci/.nvm
 
 RUN apt-get update
 
