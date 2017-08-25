@@ -5,5 +5,4 @@ services:
   sut:
     build:
       context: .
-      dockerfile: Dockerfile-${CACHE_TAG}
     command: ./scripts/tests.sh
