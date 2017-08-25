@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TAG=$(echo $IMAGE_NAME| cut -d':' -f 2)
+TAG=$(echo $IMAGE_NAME | cut -d':' -f 2)
 
 if [ "$TAG" == "7.1" ]; then
     for NEW_TAG in {7,latest}; do
