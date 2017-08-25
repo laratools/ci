@@ -6,4 +6,5 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-7.1
+      cache_from: ${CACHE_TAG}
     command: ./scripts/tests.sh
