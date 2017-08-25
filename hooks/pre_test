@@ -1,5 +1,0 @@
-#!/bin/bash
-
-TAG=$(echo $IMAGE_NAME | cut -d':' -f 2)
-
-echo "Cache Tag: ${CACHE_TAG}"
