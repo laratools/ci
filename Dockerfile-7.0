@@ -4,6 +4,7 @@ ARG BUILD_DATE
 ARG VCS_REF
 
 ENV COMPOSER_NO_INTERACTION=1
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url="https://github.com/laratools/laravel-ci.git" \
