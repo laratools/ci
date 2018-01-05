@@ -24,15 +24,11 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 
 RUN apt-get update && apt-get install -y \
         libbz2-dev \
-        libcurl4-gnutls-dev \
-        libxml2-dev \
-        libssl-dev \
         libmcrypt-dev \
         git \
         unzip \
         wget \
         libpng-dev \
-        libsqlite3-dev \
         libgconf-2-4 \
         libfontconfig1 \
         chromium \
@@ -43,34 +39,16 @@ RUN docker-php-ext-install -j$(nproc) \
         bcmath \
         bz2 \
         calendar \
-        ctype \
-        curl \
-        dom \
         exif \
-        fileinfo \
-        ftp \
         gd \
-        iconv \
-        json \
-        mbstring \
         mcrypt \
-        openssl \
         pdo_mysql \
-        pdo_sqlite \
-        posix \
-        session \
         shmop \
-        simplexml \
         sockets \
         sysvmsg \
         sysvsem \
         sysvshm \
-        tokenizer \
-        xml \
-        xmlreader \
-        xmlwriter \
-        zip \
-        zlib
+        zip
 
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/${NVM_VERSION}/install.sh | bash
 
