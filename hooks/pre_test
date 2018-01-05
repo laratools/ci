@@ -4,4 +4,4 @@ printenv
 
 TAG=$(echo $IMAGE_NAME | cut -d':' -f 2)
 
-mv Dockerfile-$TAG Dockerfile
+mv Dockerfile-$CACHE_TAG Dockerfile
