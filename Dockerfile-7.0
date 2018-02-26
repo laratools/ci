@@ -7,13 +7,13 @@ ENV COMPOSER_NO_INTERACTION=1
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.vcs-url="https://github.com/laratools/laravel-ci.git" \
+      org.label-schema.vcs-url="https://github.com/laratools/ci.git" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.schema-version="1.0" \
       org.label-schema.vendor="iwader.co.uk" \
-      org.label-schema.name="laravel-ci" \
+      org.label-schema.name="laratools-ci" \
       org.label-schema.description="Docker for Laravel in a CI environment" \
-      org.label-schema.url="https://github.com/laratools/laravel-ci"
+      org.label-schema.url="https://github.com/laratools/ci"
 
 ENV NVM_VERSION v0.33.5
 
