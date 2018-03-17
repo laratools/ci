@@ -15,12 +15,6 @@ jobs:
           name: Build Images
           command: make build-all
 
-  test:
-    working_directory: /home/circleci/laratools-ci
-    machine: true
-
-    steps:
-
       - run:
           name: Test Images
           command: make test-all
@@ -40,15 +34,11 @@ workflows:
 
   deploy:
     jobs:
-      - build
-
-      - test:
-          requires:
-            - build
+      - build-and-test
 
       - push:
           requires:
-            - test
+            - build-and-test
           filters:
             branches:
               only:
