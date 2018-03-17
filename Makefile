@@ -15,14 +15,17 @@ build:
 
 test:
 	echo "Testing Tag: $TAG"
-	make build
 	dgoss run laratools/ci:$TAG
-
 
 build-all:
 	make build TAG="7.0"
 	make build TAG="7.1"
 	make build TAG="7.2"
+
+test-all:
+	make test TAG="7.0"
+	make test TAG="7.1"
+	make test TAG="7.2"
 
 push-all:
 	docker push laratools/ci:7.0
