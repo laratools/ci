@@ -7,6 +7,8 @@ jobs:
 
     steps:
 
+      - checkout
+
       - run:
           name: Build Images
           command: make build-all
