@@ -3,7 +3,9 @@ version: 2
 jobs:
   build-and-test:
     working_directory: /home/circleci/laratools-ci
-    machine: true
+
+    docker:
+      - image: alpine:latest
 
     steps:
 
@@ -11,6 +13,10 @@ jobs:
 
       - setup_remote_docker:
           version: 17.11.0-ce
+
+      - run:
+          name: Install make
+          command: apk add --no-cache make
 
       - run:
           name: Build Images
