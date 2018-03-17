@@ -9,6 +9,8 @@ jobs:
 
       - checkout
 
+      - setup_remote_docker
+
       - run:
           name: Build Images
           command: make build-all
