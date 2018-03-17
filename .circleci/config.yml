@@ -1,0 +1,54 @@
+version: 2
+
+jobs:
+  build:
+    working_directory: /home/laratools/ci
+    machine: true
+
+    steps:
+
+      - run:
+          name: Build Images
+          command: make build-all
+
+  test:
+    working_directory: /home/laratools/ci
+    machine: true
+
+    steps:
+
+      - run:
+          name: Test Images
+          command: make test-all
+
+  push:
+    working_directory: /home/laratools/ci
+    machine: true
+
+    steps:
+
+      - run:
+          name: Push Images
+          command: make push-all
+
+workflows:
+  version: 2
+
+  deploy:
+    jobs:
+      - build
+      - test
+      - push
+    filters:
+      branches:
+        only:
+          - master
+
+  pr:
+    jobs:
+      - build
+      - test
+    filters:
+      branches:
+        ignore:
+          - master
