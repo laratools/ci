@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build:
+  build-and-test:
     working_directory: /home/circleci/laratools-ci
     machine: true
 
