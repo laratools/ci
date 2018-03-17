@@ -37,18 +37,15 @@ workflows:
   deploy:
     jobs:
       - build
-      - test
-      - push
-    filters:
-      branches:
-        only:
-          - master
 
-  pr:
-    jobs:
-      - build
-      - test
-    filters:
-      branches:
-        only: /.*/
-        ignore: /^master$/
+      - test:
+          requires:
+            - build
+
+      - push:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - master
