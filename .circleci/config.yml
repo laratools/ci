@@ -15,8 +15,8 @@ jobs:
           version: 17.11.0-ce
 
       - run:
-          name: Install make
-          command: apk add --no-cache make git
+          name: Install build tools
+          command: apk add --no-cache make git curl
 
       - run:
           name: Install goss
