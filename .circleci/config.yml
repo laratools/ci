@@ -16,7 +16,7 @@ jobs:
 
       - run:
           name: Install make
-          command: apk add --no-cache make
+          command: apk add --no-cache make git
 
       - run:
           name: Build Images
