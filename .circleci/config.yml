@@ -20,9 +20,7 @@ jobs:
 
       - run:
           name: Install goss
-          command: |
-            curl -fsSL https://goss.rocks/install | GOSS_VER=v0.3.5 GOSS_DST=/usr/local/bin sh
-            alias dgoss="sh /usr/local/bin/dgoss"
+          command: curl -fsSL https://goss.rocks/install | GOSS_VER=v0.3.5 GOSS_DST=/usr/local/bin sh
 
       - run:
           name: Build Images
@@ -30,7 +28,9 @@ jobs:
 
       - run:
           name: Test Images
-          command: make test-all
+          command: |
+            alias dgoss="sh /usr/local/bin/dgoss"
+            make test-all
 
   push:
     working_directory: /home/circleci/laratools-ci
