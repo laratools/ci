@@ -1,0 +1,17 @@
+command:
+  . ~/.nvm/nvm.sh && nvm --version:
+    exit-status: 0
+    stderr: []
+    timeout: 1000
+  composer --version:
+    exit-status: 0
+    stdout:
+    - "/Composer version/"
+    stderr: []
+    timeout: 1000
+  php --version:
+    exit-status: 0
+    stdout:
+    - "/PHP/"
+    stderr: []
+    timeout: 1000
