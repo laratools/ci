@@ -5,17 +5,17 @@ help:
 	echo "See Makefile for usage"
 
 build:
-	echo "Building Tag: $TAG"
+	echo "Building Tag: $(TAG)"
 	@docker build \
 		--no-cache \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 		--build-arg VCS_REF=`git rev-parse --short HEAD` \
-		-t laratools/ci:$TAG \
-		-f Dockerfile-$TAG .
+		-t laratools/ci:$(TAG) \
+		-f Dockerfile-$(TAG) .
 
 test:
-	echo "Testing Tag: $TAG"
-	dgoss run laratools/ci:$TAG
+	echo "Testing Tag: $(TAG)"
+	dgoss run laratools/ci:$(TAG)
 
 build-all:
 	make build TAG="7.0"
