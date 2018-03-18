@@ -20,7 +20,9 @@ jobs:
 
       - run:
           name: Install goss
-          command: curl -fsSL https://goss.rocks/install | GOSS_VER=v0.3.5 GOSS_DST=/usr/local/bin sh
+          command: |
+            curl -fsSL https://goss.rocks/install | GOSS_VER=v0.3.5 GOSS_DST=/usr/local/bin sh
+            alias dgoss="sh /usr/local/bin/dgoss"
 
       - run:
           name: Build Images
