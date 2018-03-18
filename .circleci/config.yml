@@ -5,7 +5,7 @@ jobs:
     working_directory: /home/circleci/laratools-ci
 
     docker:
-      - image: alpine:latest
+      - image: docker:stable
 
     steps:
 
