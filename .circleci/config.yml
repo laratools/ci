@@ -6,6 +6,9 @@ jobs:
 
     docker:
       - image: docker:stable
+        environment:
+          GOSS_VERSION=v0.3.5
+          GOSS_PATH=/usr/bin/goss
 
     steps:
 
@@ -21,7 +24,8 @@ jobs:
       - run:
           name: Install goss
           command: |
-            curl -L https://raw.githubusercontent.com/aelsabbahy/goss/v0.3.5/extras/dgoss/dgoss -o /usr/bin/dgoss
+            curl -L https://github.com/aelsabbahy/goss/releases/download/$GOSS_VERSION/goss-linux-amd64 -o /usr/bin/goss
+            curl -L https://raw.githubusercontent.com/aelsabbahy/goss/$GOSS_VERSION/extras/dgoss/dgoss -o /usr/bin/dgoss
             chmod +rx /usr/bin/dgoss
 
       - run:
