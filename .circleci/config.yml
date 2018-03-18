@@ -19,6 +19,10 @@ jobs:
           command: apk add --no-cache make git
 
       - run:
+          name: Install goss
+          command: curl -fsSL https://goss.rocks/install | sh
+
+      - run:
           name: Build Images
           command: make build-all
 
