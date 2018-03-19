@@ -59,4 +59,7 @@ COPY ./scripts ./scripts
 
 RUN ./scripts/composer.sh
 
-CMD ["bash", "/scripts/start.sh"]
+RUN chmod +rx ./scripts/start.sh
+
+ENTRYPOINT ["/scripts/start.sh"]
+CMD ["php", "-a"]
