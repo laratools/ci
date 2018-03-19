@@ -32,20 +32,9 @@ jobs:
           name: Test Images
           command: make test-all
 
-  push:
-    working_directory: /home/circleci/laratools-ci
-    machine: true
-
       - deploy:
           name: Push Images
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               make push-all
             fi
-
-workflows:
-  version: 2
-
-  deploy:
-    jobs:
-      - build-and-test
