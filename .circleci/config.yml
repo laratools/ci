@@ -36,6 +36,6 @@ jobs:
           name: Push Images
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
+              echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
               make push-all
             fi
