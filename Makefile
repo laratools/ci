@@ -15,7 +15,7 @@ build:
 
 test:
 	echo "Testing Tag: $(TAG)"
-	dgoss run laratools/ci:$(TAG)
+	dgoss run -it laratools/ci:$(TAG)
 
 build-all:
 	make build TAG="7.0"
