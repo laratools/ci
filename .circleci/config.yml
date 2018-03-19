@@ -38,11 +38,12 @@ jobs:
     working_directory: /home/circleci/laratools-ci
     machine: true
 
-    steps:
-
-      - run:
+      - deploy:
           name: Push Images
-          command: make push-all
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              make push-all
+            fi
 
 workflows:
   version: 2
@@ -50,11 +51,3 @@ workflows:
   deploy:
     jobs:
       - build-and-test
-
-      - push:
-          requires:
-            - build-and-test
-          filters:
-            branches:
-              only:
-                - master
