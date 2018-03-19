@@ -16,7 +16,7 @@ jobs:
 
       - run:
           name: Install build tools
-          command: apk add --no-cache make git curl
+          command: apk add --no-cache make git curl bash
 
       - run:
           name: Install goss
