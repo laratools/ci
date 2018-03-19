@@ -1,8 +1,0 @@
-version: '3.3'
-
-services:
-
-  sut:
-    build:
-      context: .
-    command: ./scripts/tests.sh

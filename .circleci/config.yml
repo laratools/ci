@@ -1,0 +1,60 @@
+version: 2
+
+jobs:
+  build-and-test:
+    working_directory: /home/circleci/laratools-ci
+
+    docker:
+      - image: docker:stable
+        environment:
+          GOSS_FILES_STRATEGY: cp
+
+    steps:
+
+      - checkout
+
+      - setup_remote_docker:
+          version: 17.11.0-ce
+
+      - run:
+          name: Install build tools
+          command: apk add --no-cache make git curl bash
+
+      - run:
+          name: Install goss
+          command: curl -fsSL https://goss.rocks/install | GOSS_VER=v0.3.5 GOSS_DST=/usr/local/bin sh
+
+      - run:
+          name: Build Images
+          command: make build-all
+
+      - run:
+          name: Test Images
+          command: |
+            alias dgoss="sh /usr/local/bin/dgoss"
+            make test-all
+
+  push:
+    working_directory: /home/circleci/laratools-ci
+    machine: true
+
+    steps:
+
+      - run:
+          name: Push Images
+          command: make push-all
+
+workflows:
+  version: 2
+
+  deploy:
+    jobs:
+      - build-and-test
+
+      - push:
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only:
+                - master
