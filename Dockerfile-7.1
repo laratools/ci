@@ -58,7 +58,8 @@ RUN docker-php-ext-install -j$(nproc) \
 RUN pecl install xdebug-2.6.0
 RUN docker-php-ext-enable xdebug
 
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/${NVM_VERSION}/install.sh | bash
+RUN mkdir -p $NVM_DIR && \
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/${NVM_VERSION}/install.sh | bash
 
 RUN . ~/.nvm/nvm.sh && \
         nvm install lts/carbon && \
