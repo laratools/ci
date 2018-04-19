@@ -1,4 +1,12 @@
 command:
+  . ~/.nvm/nvm.sh && npm --version:
+    exit-status: 0
+  . ~/.nvm/nvm.sh && node --version:
+    exit-status: 0
+  . ~/.nvm/nvm.sh && nvm alias:
+    exit-status: 0
+    stdout:
+    - "/default \\-\\> lts\\/carbon/"
   . ~/.nvm/nvm.sh && nvm --version:
     exit-status: 0
     stderr: []
