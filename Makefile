@@ -21,19 +21,22 @@ build-all:
 	make build TAG="7.0"
 	make build TAG="7.1"
 	make build TAG="7.2"
+	make build TAG="7.3"
 
 test-all:
 	make test TAG="7.0"
 	make test TAG="7.1"
 	make test TAG="7.2"
+	make test TAG="7.3"
 
 push-all:
 	docker push laratools/ci:7.0
 	docker push laratools/ci:7.1
 	docker push laratools/ci:7.2
-	# Tag 7.2 as latest and 7
-	docker tag laratools/ci:7.2 laratools/ci:7
-	docker tag laratools/ci:7.2 laratools/ci:latest
+	docker push laratools/ci:7.3
+	# Tag 7.3 as latest and 7
+	docker tag laratools/ci:7.3 laratools/ci:7
+	docker tag laratools/ci:7.3 laratools/ci:latest
 	docker push laratools/ci:7
 	docker push laratools/ci:latest
 
