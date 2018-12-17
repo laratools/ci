@@ -37,7 +37,8 @@ RUN apt-get update && apt-get install -y \
         libfontconfig1 \
         chromium \
         xvfb \
-        yarn
+        yarn \
+        libzip-dev
 
 RUN docker-php-ext-install -j$(nproc) \
         bcmath \
