@@ -1,41 +1,80 @@
-version: 2
+version: 2.1
+
+<<: &BASE_CONFIG
+  docker:
+    - image: docker:stable
+      environment:
+        GOSS_FILES_STRATEGY: cp
+
+  steps:
+
+    - checkout
+
+    - setup_remote_docker:
+        version: 17.11.0-ce
+
+    - run:
+        name: Install build tools
+        command: apk add --no-cache make git curl bash
+
+    - run:
+        name: Install goss
+        command: curl -fsSL https://goss.rocks/install | GOSS_VER=v0.3.5 GOSS_DST=/usr/local/bin sh
+
+    - run:
+        name: Build Image
+        command: make build TAG=$TAG
+
+    - run:
+        name: Test Image
+        command: make test TAG=$TAG
+
+    - deploy:
+        name: Push Image
+        command: |
+          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+            make push TAG=$TAG
+          fi
 
 jobs:
-  build:
-    working_directory: /home/circleci/laratools-ci
+  php-70:
+    <<: *BASE_CONFIG
+    working_directory: /home/circleci/ci-image
+    environment:
+      TAG: "7.0"
 
-    docker:
-      - image: docker:stable
-        environment:
-          GOSS_FILES_STRATEGY: cp
+  php-71:
+    <<: *BASE_CONFIG
+    working_directory: /home/circleci/ci-image
+    environment:
+      TAG: "7.1"
 
-    steps:
+  php-72:
+    <<: *BASE_CONFIG
+    working_directory: /home/circleci/ci-image
+    environment:
+      TAG: "7.2"
 
-      - checkout
+  php-73:
+    <<: *BASE_CONFIG
+    working_directory: /home/circleci/ci-image
+    environment:
+      TAG: "7.3"
 
-      - setup_remote_docker:
-          version: 17.11.0-ce
+  php-74:
+    <<: *BASE_CONFIG
+    working_directory: /home/circleci/ci-image
+    environment:
+      TAG: "7.4"
 
-      - run:
-          name: Install build tools
-          command: apk add --no-cache make git curl bash
+workflows:
+  version: 2
 
-      - run:
-          name: Install goss
-          command: curl -fsSL https://goss.rocks/install | GOSS_VER=v0.3.5 GOSS_DST=/usr/local/bin sh
-
-      - run:
-          name: Build Images
-          command: make build-all
-
-      - run:
-          name: Test Images
-          command: make test-all
-
-      - deploy:
-          name: Push Images
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-              make push-all
-            fi
+  build-and-deploy:
+    jobs:
+      - php-70
+      - php-71
+      - php-72
+      - php-73
+      - php-74
