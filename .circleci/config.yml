@@ -33,7 +33,7 @@ version: 2.1
         name: Push Image
         command: |
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             make push TAG=$TAG
           fi
 
