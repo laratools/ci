@@ -20,6 +20,7 @@ test:
 
 push:
 	echo "Pushing Tag: $(TAG)"; \
+	docker push laratools/ci:$(TAG) \
 	if [ "$(TAG)" = "7.4" ]; then \
 		docker tag laratools/ci:$(TAG) laratools/ci:7; \
 		docker tag laratools/ci:$(TAG) laratools/ci:latest; \
