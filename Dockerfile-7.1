@@ -55,7 +55,7 @@ RUN docker-php-ext-install -j$(nproc) \
         sysvshm \
         zip
 
-RUN pecl install redis xdebug-2.6.0
+RUN pecl install redis xdebug-2.8.0
 RUN docker-php-ext-enable \
         redis \
         xdebug
