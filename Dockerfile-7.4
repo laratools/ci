@@ -50,7 +50,6 @@ RUN docker-php-ext-install -j$(nproc) \
         sodium \
         pcntl \
         pdo_mysql \
-        redis \
         shmop \
         sockets \
         sysvmsg \
@@ -58,8 +57,10 @@ RUN docker-php-ext-install -j$(nproc) \
         sysvshm \
         zip
 
-RUN pecl install xdebug-2.8.0beta2
-RUN docker-php-ext-enable xdebug
+RUN pecl install redis xdebug-2.8.0beta2
+RUN docker-php-ext-enable \
+        redis \
+        xdebug
 
 RUN mkdir -p $NVM_DIR && \
     curl -o- https://raw.githubusercontent.com/creationix/nvm/${NVM_VERSION}/install.sh | bash
