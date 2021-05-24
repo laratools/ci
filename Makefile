@@ -23,10 +23,14 @@ push:
 	docker push laratools/ci:$(TAG); \
 	if [ "$(TAG)" = "7.4" ]; then \
 		docker tag laratools/ci:$(TAG) laratools/ci:7; \
-		docker tag laratools/ci:$(TAG) laratools/ci:latest; \
 		docker push laratools/ci:7; \
-		docker push laratools/ci:latest; \
 	fi
+	if [ "$(TAG)" = "8.0" ]; then \
+    		docker tag laratools/ci:$(TAG) laratools/ci:8; \
+    		docker tag laratools/ci:$(TAG) laratools/ci:latest; \
+    		docker push laratools/ci:8; \
+    		docker push laratools/ci:latest; \
+    	fi
 
 build-all:
 	make build TAG="7.4"
