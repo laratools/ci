@@ -29,24 +29,12 @@ push:
 	fi
 
 build-all:
-	make build TAG="7.0"
-	make build TAG="7.1"
-	make build TAG="7.2"
-	make build TAG="7.3"
 	make build TAG="7.4"
 
 test-all:
-	make test TAG="7.0"
-	make test TAG="7.1"
-	make test TAG="7.2"
-	make test TAG="7.3"
 	make test TAG="7.4"
 
 push-all:
-	make push TAG="7.0"
-	make push TAG="7.1"
-	make push TAG="7.2"
-	make push TAG="7.3"
 	make push TAG="7.4"
 
 clean:
