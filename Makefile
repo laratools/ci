@@ -30,12 +30,15 @@ push:
 
 build-all:
 	make build TAG="7.4"
+	make build TAG="8.0"
 
 test-all:
 	make test TAG="7.4"
+	make test TAG="8.0"
 
 push-all:
 	make push TAG="7.4"
+	make push TAG="8.0"
 
 clean:
 	docker ps -a -q | xargs docker rm -f

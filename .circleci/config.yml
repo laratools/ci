@@ -44,9 +44,16 @@ jobs:
     environment:
       TAG: "7.4"
 
+  php-80:
+    <<: *BASE_CONFIG
+    working_directory: /home/circleci/ci-image
+    environment:
+      TAG: "8.0"
+
 workflows:
   version: 2
 
   build-and-deploy:
     jobs:
       - php-74
+      - php-80
