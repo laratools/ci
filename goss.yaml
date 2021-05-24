@@ -6,7 +6,7 @@ command:
   . ~/.nvm/nvm.sh && nvm alias:
     exit-status: 0
     stdout:
-    - "/default \\-\\> lts\\/carbon/"
+    - "/default \\-\\> lts/"
   . ~/.nvm/nvm.sh && nvm --version:
     exit-status: 0
     stderr: []
