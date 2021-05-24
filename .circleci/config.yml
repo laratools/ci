@@ -2,7 +2,7 @@ version: 2.1
 
 <<: &BASE_CONFIG
   docker:
-    - image: docker:stable
+    - image: docker:stable-git
       environment:
         GOSS_FILES_STRATEGY: cp
 
@@ -38,30 +38,6 @@ version: 2.1
           fi
 
 jobs:
-  php-70:
-    <<: *BASE_CONFIG
-    working_directory: /home/circleci/ci-image
-    environment:
-      TAG: "7.0"
-
-  php-71:
-    <<: *BASE_CONFIG
-    working_directory: /home/circleci/ci-image
-    environment:
-      TAG: "7.1"
-
-  php-72:
-    <<: *BASE_CONFIG
-    working_directory: /home/circleci/ci-image
-    environment:
-      TAG: "7.2"
-
-  php-73:
-    <<: *BASE_CONFIG
-    working_directory: /home/circleci/ci-image
-    environment:
-      TAG: "7.3"
-
   php-74:
     <<: *BASE_CONFIG
     working_directory: /home/circleci/ci-image
@@ -73,8 +49,4 @@ workflows:
 
   build-and-deploy:
     jobs:
-      - php-70
-      - php-71
-      - php-72
-      - php-73
       - php-74
